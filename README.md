@@ -399,12 +399,13 @@ you should use any version `<5.5 >=5.7.1` as the versions in-between have some n
 
 The NPM packager supports the following `packagerOptions`:
 
-| Option                  | Type     | Default             | Description                                                         |
-|-------------------------|----------|---------------------|---------------------------------------------------------------------|
-| ignoreScripts           | bool     | false               | Do not execute package.json hook scripts on install                 |
-| noInstall               | bool     | false               | Do not run `npm install` (assume install completed)                 |
-| lockFile                | string   | ./package-lock.json | Relative path to lock file to use                                   |
+| Option                  | Type     | Default             | Description                                                                          |
+|-------------------------|----------|---------------------|--------------------------------------------------------------------------------------|
+| ignoreScripts           | bool     | false               | Do not execute package.json hook scripts on install                                  |
+| noInstall               | bool     | false               | Do not run `npm install` (assume install completed)                                  |
+| lockFile                | string   | ./package-lock.json | Relative path to lock file to use                                                    |
 | copyPackageSectionNames | string[] | []                  | Entries in your `package.json` to copy to the output `package.json` (ie: ESM output) |
+| installLinks            | bool     | false               | Use `--install-links` when installing under temporary folder                         |
 
 When using NPM version `>= 7.0.0`, we will use the `package-lock.json` file instead of modules installed in `node_modules`. This improves the
 supports of NPM `>= 8.0.0` which installs `peer-dependencies` automatically. The plugin will be able to detect the correct version.
