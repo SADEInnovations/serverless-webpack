@@ -145,6 +145,23 @@ describe('npm', () => {
           return null;
         });
     });
+
+    it('should use installLinks option', () => {
+      Utils.spawnProcess.mockReturnValue(BbPromise.resolve({ stdout: 'success', stderr: '' }));
+      return expect(npmModule.prune('myPath', { installLinks: true }))
+        .resolves.toBeUndefined()
+        .then(() => {
+          expect(Utils.spawnProcess).toHaveBeenCalledTimes(1);
+          expect(Utils.spawnProcess).toHaveBeenCalledWith(
+            expect.stringMatching(/^npm/),
+            ['prune', '--install-links=true'],
+            {
+              cwd: 'myPath'
+            }
+          );
+          return null;
+        });
+    });
   });
 
   describe('runScripts', () => {
